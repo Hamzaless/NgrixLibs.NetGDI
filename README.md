@@ -15,7 +15,6 @@ Features
 
 ## Usage
 
-C#
 ```
 using NetGDI;
 using System.Threading;
