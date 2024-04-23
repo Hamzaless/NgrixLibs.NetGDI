@@ -1,5 +1,6 @@
 # NetGDI (.NET Framework GDI32.DLL)
 [Website](https://mrhamzaless.com)
+[Nuget Package](https://www.nuget.org/packages/NetGDI/)
 ## Introduction
 NetGDI is a library for creating graphical user interface effects using GDI32.DLL on the .NET Framework. This library enables you to create various visual effects on the screen and add dynamism to graphical user interfaces.
 
