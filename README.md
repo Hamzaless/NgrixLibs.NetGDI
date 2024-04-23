@@ -13,7 +13,7 @@ Features
     Color Filters: Apply color filters to the screen.
     Melting Screen: Simulate the melting effect on the screen.
 
-Usage
+## Usage
 
 C#
 ```
