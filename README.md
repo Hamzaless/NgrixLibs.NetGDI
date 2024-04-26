@@ -1,4 +1,4 @@
-# NetGDI (.NET Framework GDI32.DLL)
+# NgrixLibs.NetGDI (.NET Framework GDI32.DLL)
 [Website](https://mrhamzaless.com)
 [Nuget Package](https://www.nuget.org/packages/NetGDI/)
 ## Introduction
