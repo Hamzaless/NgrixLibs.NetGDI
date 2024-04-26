@@ -11,7 +11,7 @@ namespace NetGDI
 {
     public class GDIEffects
     {
-        public GDIEffects(NGDISettings settings)
+        public GDIEffects()
         {
             Random r = new Random();
             int x = Screen.PrimaryScreen.Bounds.Width;
@@ -24,7 +24,7 @@ namespace NetGDI
             while (true)
             {
                 uint[] randomColors = { 0x6d067f, 0xf7971b, 0x6bf71b, 0xd9f71b, 0x9f1bf7, 0xf31bf7, 0xdb1515, 0xFFFFFF };
-                if (settings.InvertedColors)
+                if (NGDISettings.InvertedColors.Enabled)
                 {
                     IntPtr hdc = GetDC(IntPtr.Zero);
                     IntPtr brush = CreateSolidBrush(randomColors[r.Next(randomColors.Length)]);
@@ -32,9 +32,9 @@ namespace NetGDI
                     PatBlt(hdc, 0, 0, x, y, TernaryRasterOperations.PATINVERT);
                     DeleteObject(brush);
                     DeleteDC(hdc);
-                    Thread.Sleep(100);
+                    Thread.Sleep(NGDISettings.InvertedColors.Interval);
                 }
-                if (settings.BlurEffect)
+                if (NGDISettings.BlurEffect.Enabled)
                 {
                     IntPtr hdc = GetDC(IntPtr.Zero);
                     IntPtr mhdc = CreateCompatibleDC(hdc);
@@ -47,9 +47,9 @@ namespace NetGDI
                     DeleteObject(hbit);
                     DeleteDC(mhdc);
                     DeleteDC(hdc);
-                    Thread.Sleep(50);
+                    Thread.Sleep(NGDISettings.BlurEffect.Interval);
                 }
-                if (settings.RoundedTunnelEffect)
+                if (NGDISettings.RoundedTunnelEffect.Enabled)
                 {
                     IntPtr hdc = GetDC(IntPtr.Zero);
                     IntPtr mhdc = CreateCompatibleDC(hdc);
@@ -63,9 +63,9 @@ namespace NetGDI
                     lppoint[2].Y = (bottom - 50) + 0;
                     PlgBlt(hdc, lppoint, hdc, left - 20, top - 20, (right - left) + 40, (bottom - top) + 40, IntPtr.Zero, 0, 0);
                     DeleteDC(hdc);
-                    Thread.Sleep(100);
+                    Thread.Sleep(NGDISettings.RoundedTunnelEffect.Interval);
                 }
-                if (settings.HatchBrush)
+                if (NGDISettings.HatchBrush.Enabled)
                 {
                     IntPtr hdc = GetDC(IntPtr.Zero);
                     IntPtr mhdc = CreateCompatibleDC(hdc);
@@ -77,9 +77,9 @@ namespace NetGDI
                     PatBlt(hdc, 0, 0, x, y, TernaryRasterOperations.PATINVERT);
                     DeleteObject(brush);
                     DeleteDC(hdc);
-                    Thread.Sleep(100);
+                    Thread.Sleep(NGDISettings.HatchBrush.Interval);
                 }
-                if (settings.PatternBrush)
+                if (NGDISettings.PatternBrush.Enabled)
                 {
                     IntPtr hdc = GetDC(IntPtr.Zero);
                     IntPtr mhdc = CreateCompatibleDC(hdc);
@@ -93,9 +93,9 @@ namespace NetGDI
                     PatBlt(hdc, 0, 0, x, y, TernaryRasterOperations.PATINVERT);
                     DeleteObject(brush);
                     DeleteDC(hdc);
-                    Thread.Sleep(100);
+                    Thread.Sleep(NGDISettings.PatternBrush.Interval);
                 }
-                if (settings.ColorFilters)
+                if (NGDISettings.ColorFilters.Enabled)
                 {
                     IntPtr hdc = GetDC(IntPtr.Zero);
                     IntPtr mhdc = CreateCompatibleDC(hdc);
@@ -109,9 +109,9 @@ namespace NetGDI
                     BitBlt(hdc, 0, 0, x, y, hdc, 0, 0, TernaryRasterOperations.MERGECOPY);
                     DeleteObject(brush);
                     DeleteDC(hdc);
-                    Thread.Sleep(1000);
+                    Thread.Sleep(NGDISettings.ColorFilters.Interval);
                 }
-                if (settings.MeltingScreen)
+                if (NGDISettings.MeltingScreen.Enabled)
                 {
                     IntPtr hdc = GetDC(IntPtr.Zero);
                     IntPtr mhdc = CreateCompatibleDC(hdc);
@@ -130,14 +130,48 @@ namespace NetGDI
 
     public class NGDISettings
     {
-        
-        public bool InvertedColors { get; set; } 
-        public bool BlurEffect { get; set; } 
-        public bool RoundedTunnelEffect { get; set; } 
+        public static class InvertedColors
+        {
+            public static bool Enabled { get; set; }
+            public static int Interval { get; set; } = 100;
 
-        public bool HatchBrush { get; set; }
-        public bool PatternBrush { get; set; }
-        public bool ColorFilters { get; set; }
-        public bool MeltingScreen { get; set; }
+        }
+        public static class BlurEffect
+        {
+            public static bool Enabled { get; set; }
+            public static int Interval { get; set; } = 50;
+
+        }
+        public static class RoundedTunnelEffect
+        {
+            public static bool Enabled { get; set; }
+            public static int Interval { get; set; } = 100;
+
+        }
+        public static class HatchBrush
+        {
+            public static bool Enabled { get; set; }
+            public static int Interval { get; set; } = 100;
+
+        }
+        public static class PatternBrush
+        {
+            public static bool Enabled { get; set; }
+            public static int Interval { get; set; } = 100;
+
+        }
+        public static class ColorFilters
+        {
+            public static bool Enabled { get; set; }
+            public static int Interval { get; set; } = 1000;
+
+        }
+        public static class MeltingScreen
+        {
+            public static bool Enabled { get; set; }
+            public static int Interval { get; set; } = 100;
+
+        }
+
     }
 }

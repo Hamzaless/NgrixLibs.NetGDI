@@ -13,17 +13,16 @@ namespace NetGDI_Test
     {
         static void Main(string[] args)
         {
-            NGDISettings settings = new NGDISettings();
-            settings.InvertedColors = true;
-            settings.BlurEffect = true;
-            settings.RoundedTunnelEffect = true;
-            settings.HatchBrush = false;
-            settings.PatternBrush = false;
-            settings.ColorFilters = true;
-            settings.MeltingScreen = true;
+            NGDISettings.InvertedColors.Enabled = true;
+            NGDISettings.BlurEffect.Enabled = true;
+            NGDISettings.RoundedTunnelEffect.Enabled = true;
+            NGDISettings.HatchBrush.Enabled = false;
+            NGDISettings.PatternBrush.Enabled = false;
+            NGDISettings.ColorFilters.Enabled = true;
+            NGDISettings.MeltingScreen.Enabled = true;
             Thread effectsThread = new Thread(() =>
             {
-                GDIEffects netGDI = new GDIEffects(settings);
+                GDIEffects netGDI = new GDIEffects();
             });
             effectsThread.Start();
             MessageBox.Show("Are you still using?");
