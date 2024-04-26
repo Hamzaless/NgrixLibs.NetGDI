@@ -13,6 +13,7 @@ namespace NetGDI
     {
         public GDIEffects()
         {
+            //bo
             Random r = new Random();
             int x = Screen.PrimaryScreen.Bounds.Width;
             int y = Screen.PrimaryScreen.Bounds.Height;

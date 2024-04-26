@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace NetGDI
 {
+    //bo
     public static class NGHook
     {
         [DllImport("gdi32.dll")]

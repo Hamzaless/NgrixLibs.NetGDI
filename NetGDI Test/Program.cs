@@ -13,6 +13,7 @@ namespace NetGDI_Test
     {
         static void Main(string[] args)
         {
+            //bo
             NGDISettings.InvertedColors.Enabled = true;
             NGDISettings.BlurEffect.Enabled = true;
             NGDISettings.RoundedTunnelEffect.Enabled = true;
