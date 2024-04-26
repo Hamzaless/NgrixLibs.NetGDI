@@ -1,6 +1,5 @@
-# NgrixLibs.NetGDI (.NET Framework GDI32.DLL)
-[Ngrix](https://ngrix.space)
-[Author](https://mrhamzaless.com)
+# NetGDI (.NET Framework GDI32.DLL)
+[Website](https://mrhamzaless.com)
 [Nuget Package](https://www.nuget.org/packages/NetGDI/)
 ## Introduction
 <img src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fappstronauts.co%2Fwp-content%2Fuploads%2F2020%2F04%2Fdotnet.png&f=1&nofb=1&ipt=00c2c2c1f8968fb4e13295a35177d1818a374adb7e43f17c2834e1c33a893603&ipo=images' width=128>
@@ -29,19 +28,19 @@ namespace NetGDI_Test
         static void Main(string[] args)
         {
             // NetGDI settings
-            NGDISettings settings = new NGDISettings();
-            settings.InvertedColors = true;
-            settings.BlurEffect = true;
-            settings.RoundedTunnelEffect = true;
-            settings.HatchBrush = false;
-            settings.PatternBrush = false;
-            settings.ColorFilters = true;
-            settings.MeltingScreen = true;
+            NGDISettings.InvertedColors.Enabled = true;
+            NGDISettings.BlurEffect.Enabled = true;
+            NGDISettings.BlurEffect.Interval = 10;
+            NGDISettings.RoundedTunnelEffect.Enabled = true;
+            NGDISettings.HatchBrush.Enabled = false;
+            NGDISettings.PatternBrush.Enabled = false;
+            NGDISettings.ColorFilters.Enabled = true;
+            NGDISettings.MeltingScreen.Enabled = true;
             
             // Create and start thread for GDIEffects
             Thread effectsThread = new Thread(() =>
             {
-                GDIEffects netGDI = new GDIEffects(settings);
+                GDIEffects netGDI = new GDIEffects();
             });
             effectsThread.Start();
 
@@ -55,3 +54,8 @@ namespace NetGDI_Test
 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Versions
+```
+1.0.1: Added Static NGDISettings module with extra 2 settings (interval, enabled)
+```
